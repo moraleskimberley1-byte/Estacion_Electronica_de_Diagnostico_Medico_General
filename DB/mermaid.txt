@@ -1,0 +1,51 @@
+erDiagram
+    PACIENTE ||--o{ GLUCOSA : tiene
+    PACIENTE ||--o{ PRESION_FC : tiene
+    PACIENTE ||--o{ TEMP_SPO2 : tiene
+    PACIENTE ||--o{ ECG_EXAMEN : tiene
+
+    PACIENTE {
+      long id_paciente PK
+      string nombre
+      string apellido
+      string usuario
+      string password_hash
+    }
+
+    GLUCOSA {
+      long id_glucosa PK
+      long id_paciente FK
+      datetime fecha_hora
+      float glucosa
+    }
+
+    PRESION_FC {
+      long id_presion PK
+      long id_paciente FK
+      datetime fecha_hora
+      int sistolica
+      int diastolica
+      int frecuencia_cardiaca
+    }
+
+    TEMP_SPO2 {
+      long id_temp PK
+      long id_paciente FK
+      datetime fecha_hora
+      float temperatura_c
+      int spo2
+    }
+
+    ECG_EXAMEN {
+      long id_ecg PK
+      long id_paciente FK
+      datetime fecha_hora
+      int fs_hz
+      float duracion_s
+      int n_muestras
+      bytes muestras_blob
+      float escala
+      float offset
+      string encoding
+      datetime creado_en
+    }
